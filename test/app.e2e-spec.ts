@@ -36,6 +36,17 @@ describe('App e2e', () => {
     app.close()
   })
 
+  describe('System', () => {
+    describe('Health check', () => {
+      it('works', () => {
+        return pactum
+          .spec()
+          .get('/system/health-check')
+          .expectStatus(200)
+          .expectBody('true')
+      })
+    })
+  })
 
   describe('Auth', () => {
     const dtoSignUp: SignUpDto = {
@@ -156,11 +167,4 @@ describe('App e2e', () => {
     describe('Create', () => {})
     describe('Delete', () => {})
   })
-
-  describe('System', () => {
-    describe('Health check', () => {})
-  })
-
-  it.todo('should pass')
-  it.todo('should pass2')
 })
