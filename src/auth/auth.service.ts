@@ -47,7 +47,7 @@ export class AuthService {
     }
 
     /**
-     * Sign a user
+     * Sign an user
      * 
      * @param dto 
      * @returns 
@@ -66,6 +66,12 @@ export class AuthService {
         return this.signToken(user);
     }
 
+    /**
+     * Creates a new token for an user
+     * 
+     * @param user 
+     * @returns 
+     */
     async signToken(user: User): Promise<{ accessToken: string }> {
         const accessToken = await this.jwt.signAsync({
             id: user.id,
